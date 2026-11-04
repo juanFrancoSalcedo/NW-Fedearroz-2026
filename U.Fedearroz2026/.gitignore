@@ -10,6 +10,7 @@
 [Bb]uilds/
 [Ll]ogs/
 [Uu]ser[Ss]ettings/
+.utmp/
 
 # --- Remover excepto archivos .gitkeep ---
 [Uu]ser[Ss]ettings/
