@@ -77,3 +77,61 @@ public class BoxColliderEventListener:Monobehaviour
     }
 }
 ```
+
+---
+
+## 📡 EventListener que escucha un Service
+
+Cuando el origen es un `Service` global (`uservice`), el `EventListener` se suscribe a su evento C# y lo re-expone como `UnityEvent` para cablearlo en el Inspector. Propaga los datos del `Model`.
+
+### NfcEventListener (escucha NfcService.OnTagRead)
+
+```csharp
+using TMPro;
+using UnityEngine;
+using UnityEngine.Events;
+
+public class NfcEventListener : MonoBehaviour
+{
+    [SerializeField] private bool subscribeOnEnable = true;
+
+    [Header("Display")]
+    [SerializeField] private TMP_Text display;                 // muestra el contenido leído
+
+    [Header("Eventos")]
+    [SerializeField] private UnityEvent<NfcModel> onTagRead;   // propaga los datos completos
+    [SerializeField] private UnityEvent<string> onContenido;   // solo el número en texto
+
+    private void OnEnable()
+    {
+        if (subscribeOnEnable) Subscribe();
+    }
+
+    private void OnDisable()
+    {
+        Unsubscribe();
+    }
+
+    public void Subscribe()
+    {
+        NfcService.OnTagRead -= HandleTagRead;   // idempotente: evita duplicados
+        NfcService.OnTagRead += HandleTagRead;
+    }
+
+    public void Unsubscribe()
+    {
+        NfcService.OnTagRead -= HandleTagRead;
+    }
+
+    private void HandleTagRead(NfcModel modelo)
+    {
+        if (display != null)
+            display.text = modelo.Contenido;
+
+        onTagRead?.Invoke(modelo);
+        onContenido?.Invoke(modelo.Contenido);
+    }
+}
+```
+
+> El `EventListener` **solo escucha y expone UnityEvents**. La lógica real (leer NFC, decidir qué hacer con el número) vive en el `Service` y en los `Handler`.

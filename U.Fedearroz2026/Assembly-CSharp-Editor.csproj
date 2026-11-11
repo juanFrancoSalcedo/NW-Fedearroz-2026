@@ -64,6 +64,7 @@
   <ItemGroup>
     <Compile Include="Assets\ExternalAssets\B_Extension\Simple\Force Camera Ratio\Editor\ForceCameraRatioEditor.cs" />
     <Compile Include="Assets\TutorialInfo\Scripts\Editor\ReadmeEditor.cs" />
+    <Compile Include="Assets\Code\Scripts\Editor\BuildConfigureRuleta.cs" />
     <Compile Include="Assets\ExternalAssets\B_Extension\Advance\HierarchyEnabler\Scripts\Editor\ToolsHierarchy.cs" />
     <Compile Include="Assets\ExternalAssets\B_Extension\Advance\HierarchyEnabler\Scripts\Editor\HierarchyEditor.cs" />
     <Compile Include="Assets\ExternalAssets\B_Extension\Advance\SceneLoader\Scripts\Editor\WindowSceneSelection.cs" />
@@ -1389,12 +1390,8 @@
       <HintPath>Library\ScriptAssemblies\Unity.2D.Aseprite.Editor.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="Unity.RenderPipelines.ShaderGraph.ShaderGraphLibrary">
-      <HintPath>Library\ScriptAssemblies\Unity.RenderPipelines.ShaderGraph.ShaderGraphLibrary.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="Unity.RenderPipelines.Core.Runtime">
-      <HintPath>Library\ScriptAssemblies\Unity.RenderPipelines.Core.Runtime.dll</HintPath>
+    <Reference Include="Unity.2D.Psdimporter.Editor">
+      <HintPath>Library\ScriptAssemblies\Unity.2D.Psdimporter.Editor.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Unity.Pipeline">
@@ -1405,12 +1402,16 @@
       <HintPath>Library\ScriptAssemblies\Unity.VisualScripting.Flow.dll</HintPath>
       <Private>False</Private>
     </Reference>
+    <Reference Include="Unity.RenderPipelines.ShaderGraph.ShaderGraphLibrary">
+      <HintPath>Library\ScriptAssemblies\Unity.RenderPipelines.ShaderGraph.ShaderGraphLibrary.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
     <Reference Include="Unity.TextMeshPro.Editor">
       <HintPath>Library\ScriptAssemblies\Unity.TextMeshPro.Editor.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="Unity.2D.Psdimporter.Editor">
-      <HintPath>Library\ScriptAssemblies\Unity.2D.Psdimporter.Editor.dll</HintPath>
+    <Reference Include="Unity.RenderPipelines.Core.Runtime">
+      <HintPath>Library\ScriptAssemblies\Unity.RenderPipelines.Core.Runtime.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Unity.PlasticSCM.Editor.Assistant">
@@ -1530,10 +1531,6 @@
     <ProjectReference Include="Assembly-CSharp.csproj">
       <Project>{42ED538D-5446-B16B-1480-E81ACAFF9B72}</Project>
       <Name>Assembly-CSharp</Name>
-    </ProjectReference>
-    <ProjectReference Include="2DUnitychanSamples.csproj">
-      <Project>{FA2DE0BE-2096-98B1-61EC-DF915AF98599}</Project>
-      <Name>2DUnitychanSamples</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

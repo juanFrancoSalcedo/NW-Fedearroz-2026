@@ -62,9 +62,10 @@
     <Analyzer Include="C:\Users\USER\Documents\Newrona\Repositories\FedeArroz 2026\U.Fedearroz2026\Library\PackageCache\com.unity.pipeline@363b8bb9e91d\Runtime\Analyzers\IlInterpreterAnalyzer.dll" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\Code\Scripts\Features\HeroIKVariant\HeroIKVariantHandler.cs" />
     <Compile Include="Assets\ExternalAssets\B_Extension\Simple\ScreenAdapter.cs" />
+    <Compile Include="Assets\Code\Scripts\Services\Nfc\NfcService.cs" />
     <Compile Include="Assets\ExternalAssets\B_Extension\Base\KeyStorage.cs" />
+    <Compile Include="Assets\Code\Scripts\Features\Nfc\NfcHandler.cs" />
     <Compile Include="Assets\ExternalAssets\B_Extension\Simple\LayerColliderDetection\TriggerDetector.cs" />
     <Compile Include="Assets\ExternalAssets\B_Extension\Advance\Debug Canvas\CardDebug.cs" />
     <Compile Include="Assets\ExternalAssets\B_Extension\Advance\TextSearcher\WindowTextBrowser.cs" />
@@ -73,13 +74,16 @@
     <Compile Include="Assets\ExternalAssets\B_Extension\Advance\SceneLoader\Scripts\ButtonLoaderScene.cs" />
     <Compile Include="Assets\ExternalAssets\B_Extension\Advance\SceneLoader\Scripts\SceneLoader.cs" />
     <Compile Include="Assets\ExternalAssets\B_Extension\Base\BaseToggleAttendant.cs" />
+    <Compile Include="Assets\Code\Scripts\Features\Stereo\StereoIpdAdjuster.cs" />
     <Compile Include="Assets\ExternalAssets\B_Extension\Base\BExtensionVersion.cs" />
     <Compile Include="Assets\ExternalAssets\B_Extension\Advance\Form\FormDropdown.cs" />
     <Compile Include="Assets\ExternalAssets\B_Extension\Simple\Timer.cs" />
+    <Compile Include="Assets\Code\ScriptsNFC\NFCReaderAndroid.cs" />
     <Compile Include="Assets\ExternalAssets\B_Extension\Base\Extensions Classes\UnityEventExtensions.cs" />
     <Compile Include="Assets\ExternalAssets\B_Extension\Advance\HierarchyEnabler\Scripts\Controllers\HierarchyState\StateSetter.cs" />
     <Compile Include="Assets\ExternalAssets\B_Extension\Advance\Serialized Interface\RequireBadInterfaceAttribute.cs" />
     <Compile Include="Assets\ExternalAssets\B_Extension\Advance\SceneLoader\Scripts\ButtonQuitApplication.cs" />
+    <Compile Include="Assets\Code\Scripts\Features\Nfc\NfcEventListener.cs" />
     <Compile Include="Assets\ExternalAssets\B_Extension\Base\Singleton.cs" />
     <Compile Include="Assets\ExternalAssets\B_Extension\Advance\Form\FormInputField.cs" />
     <Compile Include="Assets\ExternalAssets\B_Extension\Advance\SceneLoader\Scripts\ILoadingScreen.cs" />
@@ -89,7 +93,6 @@
     <Compile Include="Assets\ExternalAssets\B_Extension\Simple\GameVersionDisplay.cs" />
     <Compile Include="Assets\ExternalAssets\B_Extension\Advance\PlayerPrefs\PlayerPrefsSaveCaller.cs" />
     <Compile Include="Assets\ExternalAssets\B_Extension\Base\RandomToken.cs" />
-    <Compile Include="Assets\Scripts\NFCReaderAndroid.cs" />
     <Compile Include="Assets\ExternalAssets\B_Extension\Advance\Form\FormController.cs" />
     <Compile Include="Assets\ExternalAssets\B_Extension\Advance\Serialized Interface\ObjetoConInterface.cs" />
     <Compile Include="Assets\ExternalAssets\B_Extension\Advance\UIFitter\PositionRectFitter.cs" />
@@ -106,15 +109,17 @@
     <Compile Include="Assets\ExternalAssets\B_Extension\Simple\PrefabCreatorWindow.cs" />
     <Compile Include="Assets\ExternalAssets\B_Extension\Simple\LayerColliderDetection\CollisionDetector.cs" />
     <Compile Include="Assets\ExternalAssets\B_Extension\Simple\OnEnableBehavioour\OnEnableEventHandler.cs" />
+    <Compile Include="Assets\Code\Scripts\Services\Nfc\NfcModel.cs" />
     <Compile Include="Assets\ExternalAssets\B_Extension\Simple\TransformCopy.cs" />
     <Compile Include="Assets\ExternalAssets\B_Extension\Advance\SceneLoader\Scripts\CallerSceneLoader.cs" />
-    <Compile Include="Assets\ExternalAssets\2D Animated Characters samples\Sara_LostCrypt\PonyTailFollow.cs" />
     <Compile Include="Assets\ExternalAssets\B_Extension\Advance\Form\FormToggleInput.cs" />
     <Compile Include="Assets\ExternalAssets\B_Extension\Advance\Serialized Interface\InterfaceHolder.cs" />
+    <Compile Include="Assets\Code\Scripts\Features\Stereo\StereoRig.cs" />
     <Compile Include="Assets\ExternalAssets\B_Extension\Base\BaseButtonAttendant.cs" />
     <Compile Include="Assets\ExternalAssets\B_Extension\Simple\LayerColliderDetection\CollisionDetector2D.cs" />
     <Compile Include="Assets\ExternalAssets\B_Extension\Advance\PlayerPrefs\WindowSearchPlayerPrefsPosible.cs" />
     <Compile Include="Assets\ExternalAssets\B_Extension\Simple\LayerColliderDetection\LayerDetection.cs" />
+    <Compile Include="Assets\Code\ScriptsNFC\ControlNFC.cs" />
     <Compile Include="Assets\ExternalAssets\B_Extension\Advance\HierarchyEnabler\Scripts\Controllers\HierarchyState\HierarchyActivator.cs" />
     <Compile Include="Assets\ExternalAssets\B_Extension\Advance\Serialized Interface\DemoInterface.cs" />
     <Compile Include="Assets\ExternalAssets\B_Extension\Advance\Debug Canvas\TestDebug.cs" />
@@ -122,38 +127,38 @@
     <Compile Include="Assets\ExternalAssets\B_Extension\Advance\Form\FormInputCellphoneField.cs" />
     <Compile Include="Assets\ExternalAssets\B_Extension\Base\ToggleEventsBasic.cs" />
     <Compile Include="Assets\ExternalAssets\B_Extension\Base\ListToEnumEditor\ListToEnumEditor.cs" />
-    <Compile Include="Assets\ExternalAssets\B_Extension\Advance\Form\IFormInput.cs" />
     <Compile Include="Assets\ExternalAssets\B_Extension\Advance\Debug Canvas\DebugCanvas.cs" />
+    <Compile Include="Assets\ExternalAssets\B_Extension\Advance\Form\IFormInput.cs" />
     <Compile Include="Assets\ExternalAssets\B_Extension\Simple\LayerColliderDetection\TriggerDetector2D.cs" />
-    <Compile Include="Assets\Scripts\ControlNFC.cs" />
     <Compile Include="Assets\ExternalAssets\B_Extension\Advance\Form\FormInputNameField.cs" />
     <Compile Include="Assets\ExternalAssets\B_Extension\Advance\Form\FormInputEmail.cs" />
     <Compile Include="Assets\ExternalAssets\B_Extension\Base\ListToEnumEditor\ListEnumDrawer.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
-    <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Overlay.shader" />
-    <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile-2-Pass.shader" />
-    <None Include="Assets\TextMesh Pro\Shaders\TMP_Bitmap.shader" />
-    <None Include="Assets\TextMesh Pro\Shaders\TMPro_Mobile.cginc" />
-    <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF SSD.shader" />
-    <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Surface-Mobile.shader" />
-    <None Include="Assets\TextMesh Pro\Shaders\SDFFunctions.hlsl" />
-    <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Surface.shader" />
-    <None Include="Assets\TextMesh Pro\Sprites\EmojiOne Attribution.txt" />
-    <None Include="Assets\TextMesh Pro\Shaders\TMP_Bitmap-Custom-Atlas.shader" />
-    <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF.shader" />
-    <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile SSD.shader" />
-    <None Include="Assets\TextMesh Pro\Resources\LineBreaking Leading Characters.txt" />
-    <None Include="Assets\TextMesh Pro\Shaders\TMPro_Properties.cginc" />
-    <None Include="Assets\TextMesh Pro\Shaders\TMPro_Surface.cginc" />
-    <None Include="Assets\TextMesh Pro\Resources\LineBreaking Following Characters.txt" />
-    <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Masking.shader" />
-    <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF Overlay.shader" />
-    <None Include="Assets\TextMesh Pro\Shaders\TMP_Bitmap-Mobile.shader" />
-    <None Include="Assets\TextMesh Pro\Fonts\LiberationSans - OFL.txt" />
-    <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile.shader" />
-    <None Include="Assets\TextMesh Pro\Shaders\TMP_Sprite.shader" />
+    <None Include="Assets\ExternalAssets\TextMesh Pro\Shaders\TMPro.cginc" />
+    <None Include="Assets\ExternalAssets\TextMesh Pro\Shaders\TMP_SDF-Mobile Overlay.shader" />
+    <None Include="Assets\ExternalAssets\TextMesh Pro\Shaders\TMP_SDF-Mobile-2-Pass.shader" />
+    <None Include="Assets\ExternalAssets\TextMesh Pro\Shaders\TMP_Bitmap.shader" />
+    <None Include="Assets\ExternalAssets\TextMesh Pro\Shaders\TMPro_Mobile.cginc" />
+    <None Include="Assets\ExternalAssets\TextMesh Pro\Shaders\TMP_SDF SSD.shader" />
+    <None Include="Assets\Code\Shaders\StereoBarrelDistortion.shader" />
+    <None Include="Assets\ExternalAssets\TextMesh Pro\Shaders\TMP_SDF-Surface-Mobile.shader" />
+    <None Include="Assets\ExternalAssets\TextMesh Pro\Shaders\SDFFunctions.hlsl" />
+    <None Include="Assets\ExternalAssets\TextMesh Pro\Shaders\TMP_SDF-Surface.shader" />
+    <None Include="Assets\ExternalAssets\TextMesh Pro\Sprites\EmojiOne Attribution.txt" />
+    <None Include="Assets\ExternalAssets\TextMesh Pro\Shaders\TMP_Bitmap-Custom-Atlas.shader" />
+    <None Include="Assets\ExternalAssets\TextMesh Pro\Shaders\TMP_SDF.shader" />
+    <None Include="Assets\ExternalAssets\TextMesh Pro\Shaders\TMP_SDF-Mobile SSD.shader" />
+    <None Include="Assets\ExternalAssets\TextMesh Pro\Resources\LineBreaking Leading Characters.txt" />
+    <None Include="Assets\ExternalAssets\TextMesh Pro\Shaders\TMPro_Properties.cginc" />
+    <None Include="Assets\ExternalAssets\TextMesh Pro\Shaders\TMPro_Surface.cginc" />
+    <None Include="Assets\ExternalAssets\TextMesh Pro\Resources\LineBreaking Following Characters.txt" />
+    <None Include="Assets\ExternalAssets\TextMesh Pro\Shaders\TMP_SDF-Mobile Masking.shader" />
+    <None Include="Assets\ExternalAssets\TextMesh Pro\Shaders\TMP_SDF Overlay.shader" />
+    <None Include="Assets\ExternalAssets\TextMesh Pro\Shaders\TMP_Bitmap-Mobile.shader" />
+    <None Include="Assets\ExternalAssets\TextMesh Pro\Fonts\LiberationSans - OFL.txt" />
+    <None Include="Assets\ExternalAssets\TextMesh Pro\Shaders\TMP_SDF-Mobile.shader" />
+    <None Include="Assets\ExternalAssets\TextMesh Pro\Shaders\TMP_Sprite.shader" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">
@@ -1372,12 +1377,8 @@
       <HintPath>Library\ScriptAssemblies\Unity.2D.Aseprite.Editor.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="Unity.RenderPipelines.ShaderGraph.ShaderGraphLibrary">
-      <HintPath>Library\ScriptAssemblies\Unity.RenderPipelines.ShaderGraph.ShaderGraphLibrary.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="Unity.RenderPipelines.Core.Runtime">
-      <HintPath>Library\ScriptAssemblies\Unity.RenderPipelines.Core.Runtime.dll</HintPath>
+    <Reference Include="Unity.2D.Psdimporter.Editor">
+      <HintPath>Library\ScriptAssemblies\Unity.2D.Psdimporter.Editor.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Unity.Pipeline">
@@ -1388,12 +1389,16 @@
       <HintPath>Library\ScriptAssemblies\Unity.VisualScripting.Flow.dll</HintPath>
       <Private>False</Private>
     </Reference>
+    <Reference Include="Unity.RenderPipelines.ShaderGraph.ShaderGraphLibrary">
+      <HintPath>Library\ScriptAssemblies\Unity.RenderPipelines.ShaderGraph.ShaderGraphLibrary.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
     <Reference Include="Unity.TextMeshPro.Editor">
       <HintPath>Library\ScriptAssemblies\Unity.TextMeshPro.Editor.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="Unity.2D.Psdimporter.Editor">
-      <HintPath>Library\ScriptAssemblies\Unity.2D.Psdimporter.Editor.dll</HintPath>
+    <Reference Include="Unity.RenderPipelines.Core.Runtime">
+      <HintPath>Library\ScriptAssemblies\Unity.RenderPipelines.Core.Runtime.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Unity.PlasticSCM.Editor.Assistant">
@@ -1510,10 +1515,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="2DUnitychanSamples.csproj">
-      <Project>{FA2DE0BE-2096-98B1-61EC-DF915AF98599}</Project>
-      <Name>2DUnitychanSamples</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="GenerateTargetFrameworkMonikerAttribute" />
