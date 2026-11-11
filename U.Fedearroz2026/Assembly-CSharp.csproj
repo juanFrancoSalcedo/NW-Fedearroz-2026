@@ -101,6 +101,7 @@
     <Compile Include="Assets\ExternalAssets\B_Extension\Simple\OnEnableBehavioour\EnableDisableArray.cs" />
     <Compile Include="Assets\TutorialInfo\Scripts\Readme.cs" />
     <Compile Include="Assets\ExternalAssets\B_Extension\Advance\SceneLoader\Scripts\ScreenLoadingDemo.cs" />
+    <Compile Include="Assets\Scripts\VideoControles.cs" />
     <Compile Include="Assets\ExternalAssets\B_Extension\Simple\OnEnableBehavioour\OnDisableEventHandler.cs" />
     <Compile Include="Assets\ExternalAssets\B_Extension\Advance\PlayerPrefs\PlayerPrefsEventListener.cs" />
     <Compile Include="Assets\ExternalAssets\B_Extension\Advance\Form\IFormSubmitable.cs" />
@@ -130,6 +131,7 @@
     <Compile Include="Assets\ExternalAssets\B_Extension\Advance\Debug Canvas\DebugCanvas.cs" />
     <Compile Include="Assets\ExternalAssets\B_Extension\Advance\Form\IFormInput.cs" />
     <Compile Include="Assets\ExternalAssets\B_Extension\Simple\LayerColliderDetection\TriggerDetector2D.cs" />
+    <Compile Include="Assets\Scripts\ControlNFC.cs" />
     <Compile Include="Assets\ExternalAssets\B_Extension\Advance\Form\FormInputNameField.cs" />
     <Compile Include="Assets\ExternalAssets\B_Extension\Advance\Form\FormInputEmail.cs" />
     <Compile Include="Assets\ExternalAssets\B_Extension\Base\ListToEnumEditor\ListEnumDrawer.cs" />
