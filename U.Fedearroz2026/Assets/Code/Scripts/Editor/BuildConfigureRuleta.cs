@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using System.IO;
 using UnityEditor;
 using UnityEditor.SceneManagement;
@@ -36,6 +37,37 @@ namespace FedeArroz.EditorTools
                 false);
         }
 
+        private static void ConfigureSceneList(string targetScenePath)
+        {
+            List<EditorBuildSettingsScene> scenes = new List<EditorBuildSettingsScene>(EditorBuildSettings.scenes);
+
+            EnsureScene(scenes, RuletaScenePath);
+            EnsureScene(scenes, HoloboxScenePath);
+
+            List<EditorBuildSettingsScene> result = new List<EditorBuildSettingsScene>(scenes.Count);
+
+            foreach (EditorBuildSettingsScene scene in scenes)
+            {
+                if (scene.path == RuletaScenePath || scene.path == HoloboxScenePath)
+                    result.Add(new EditorBuildSettingsScene(scene.path, scene.path == targetScenePath));
+                else
+                    result.Add(scene);
+            }
+
+            EditorBuildSettings.scenes = result.ToArray();
+        }
+
+        private static void EnsureScene(List<EditorBuildSettingsScene> scenes, string path)
+        {
+            foreach (EditorBuildSettingsScene scene in scenes)
+            {
+                if (scene.path == path)
+                    return;
+            }
+
+            scenes.Add(new EditorBuildSettingsScene(path, false));
+        }
+
         private static void Configure(
             string label,
             string scenePath,
@@ -66,10 +98,7 @@ namespace FedeArroz.EditorTools
             if (!EditorSceneManager.SaveCurrentModifiedScenesIfUserWantsTo())
                 return;
 
-            EditorBuildSettings.scenes = new[]
-            {
-                new EditorBuildSettingsScene(scenePath, true)
-            };
+            ConfigureSceneList(scenePath);
 
             if (target == BuildTarget.Android)
             {

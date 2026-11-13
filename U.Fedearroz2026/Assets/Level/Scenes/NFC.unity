@@ -571,7 +571,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 2045910988}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9843818cb9960dd72a9d7db8b8eff559, type: 3}
+  m_Script: {fileID: 11500000, guid: 89aad7d36d03fcd4c84411d98534a903, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ControlNFC
   tarjetas:

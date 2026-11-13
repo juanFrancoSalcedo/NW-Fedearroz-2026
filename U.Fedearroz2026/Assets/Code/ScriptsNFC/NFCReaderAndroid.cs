@@ -14,8 +14,18 @@ public class NFCReaderAndroid : MonoBehaviour
 
     const int FLAG_READER_NFC_A = 0x01;
 
+    bool isAndroid;
+
     void Start()
     {
+        isAndroid = Application.platform == RuntimePlatform.Android;
+
+        if (!isAndroid)
+        {
+            enabled = false;
+            return;
+        }
+
         using (var cls = new AndroidJavaClass("com.unity3d.player.UnityPlayer"))
             activity = cls.GetStatic<AndroidJavaObject>("currentActivity");
 
@@ -30,7 +40,7 @@ public class NFCReaderAndroid : MonoBehaviour
 
     void OnApplicationFocus(bool focus)
     {
-        if (nfcAdapter == null) return;
+        if (!isAndroid || nfcAdapter == null) return;
         if (focus)
             activity.Call("runOnUiThread", new AndroidJavaRunnable(() =>
                 nfcAdapter.Call("enableReaderMode", activity, readerCallback,
@@ -42,6 +52,8 @@ public class NFCReaderAndroid : MonoBehaviour
 
     void Update()
     {
+        if (!isAndroid) return;
+
         lock (lecturas)
             while (lecturas.Count > 0)
             {

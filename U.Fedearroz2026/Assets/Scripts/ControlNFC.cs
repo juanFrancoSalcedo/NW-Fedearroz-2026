@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.InputSystem;
 
 public class ControlNFC : MonoBehaviour
 {
@@ -29,6 +30,17 @@ public class ControlNFC : MonoBehaviour
 
     Dictionary<string, int> porUid;    // UID → índice en la lista
     string buffer = "";
+    readonly List<Keyboard> keyboards = new List<Keyboard>();
+
+    void OnEnable()
+    {
+        BindKeyboards();
+    }
+
+    void OnDisable()
+    {
+        UnbindKeyboards();
+    }
 
     void Start()
     {
@@ -40,28 +52,98 @@ public class ControlNFC : MonoBehaviour
 
     void Update()
     {
-        // El hardware/Arduino "escribe" el UID como texto (ej. "FBFE2A54\n")
-        // También acepta solo dígitos como índice (ej. "042\n") por compatibilidad.
-        foreach (char c in Input.inputString)
-        {
-            if (char.IsDigit(c) || (c >= 'a' && c <= 'f') || (c >= 'A' && c <= 'F'))
-                buffer += c;
-            else if ((c == '\n' || c == '\r') && buffer.Length > 0)
-            {
-                string valor = buffer;
-                buffer = "";
+        BindKeyboards();
 
-                if (porUid.ContainsKey(valor.ToUpperInvariant()))
-                    OnTagDetected(valor);            // era un UID (FBFE2A54...)
-                else if (int.TryParse(valor, out int idx) && idx >= 0 && idx < tarjetas.Count)
-                    Activar(idx);                    // era un índice (000, 001...)
-                else
-                    Debug.LogWarning($"[NFC] Valor no reconocido: {valor}");
+        foreach (Keyboard keyboard in keyboards)
+        {
+            if (keyboard.enterKey.wasPressedThisFrame || keyboard.numpadEnterKey.wasPressedThisFrame)
+            {
+                //ProcesarBuffer();
+                break;
             }
         }
     }
 
-    // Lo llama el plugin Android (Proyecto B) o el Update de arriba (Proyecto A)
+    void BindKeyboards()
+    {
+        for (int i = keyboards.Count - 1; i >= 0; i--)
+        {
+            Keyboard keyboard = keyboards[i];
+            if (keyboard == null || !keyboard.added)
+            {
+                if (keyboard != null)
+                    keyboard.onTextInput -= OnTextInput;
+
+                keyboards.RemoveAt(i);
+            }
+        }
+
+        foreach (InputDevice device in InputSystem.devices)
+        {
+            if (device is Keyboard keyboard && !keyboards.Contains(keyboard))
+            {
+                keyboard.onTextInput += OnTextInput;
+                keyboards.Add(keyboard);
+            }
+        }
+    }
+
+    void UnbindKeyboards()
+    {
+        foreach (Keyboard keyboard in keyboards)
+        {
+            if (keyboard != null)
+                keyboard.onTextInput -= OnTextInput;
+        }
+
+        keyboards.Clear();
+    }
+
+    void OnTextInput(char c)
+    {
+        
+        // El hardware/Arduino "escribe" el UID como texto (ej. "FBFE2A54\n")
+        // También acepta solo dígitos como índice (ej. "042\n") por compatibilidad.
+        if (char.IsDigit(c) || (c >= 'a' && c <= 'f') || (c >= 'A' && c <= 'F'))
+            buffer += c;
+        else if (c == '\n' || c == '\r')
+            SearchProcesor(buffer);
+    }
+
+    public void SearchProcesor(string elBuffer)
+    {
+        var p = tarjetas.Find(t => t.uid.Equals(elBuffer));
+        if (p != null)
+            ProcesarLectura(elBuffer);
+        else
+            print($"Solo no existe el objeto {elBuffer}");
+        //tarjetas.Find
+        buffer = string.Empty;
+    }
+
+    private void ProcesarLectura(string valor)
+    {
+        string normalizado = valor.ToUpperInvariant();
+        if (porUid.TryGetValue(normalizado, out int idx))
+        {
+            Activar(idx);
+            return;
+        }
+        var compo = tarjetas.Find(c => c.uid.Equals(normalizado));
+        NfcService.NotifyTag(new NfcModel(normalizado, compo.nombre));
+
+        if (int.TryParse(valor, out int indice) && indice >= 0 && indice < tarjetas.Count)
+        {
+            Activar(indice);
+            string uid = tarjetas[indice].uid;
+            NfcService.NotifyTag(new NfcModel(string.IsNullOrEmpty(uid) ? valor : uid, (indice + 1).ToString()));
+            return;
+        }
+
+        Debug.LogWarning($"[NFC] Valor no reconocido: {valor}");
+    }
+
+    // Lo llama NFCReaderAndroid, que ya emitió NfcService.NotifyTag con el contenido NDEF.
     public void OnTagDetected(string uid)
     {
         if (porUid.TryGetValue(uid.ToUpperInvariant().Trim(), out int idx))
@@ -73,7 +155,7 @@ public class ControlNFC : MonoBehaviour
             Debug.LogWarning($"[NFC] Tarjeta no registrada: {uid}");
     }
 
-    void Activar(int i)
+    private void Activar(int i)
     {
         if (soloUnContenidoVisible)
             foreach (var t in tarjetas)
