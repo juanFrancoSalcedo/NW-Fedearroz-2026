@@ -28,6 +28,13 @@ public class ControlNFC : MonoBehaviour
     [Tooltip("Si está activado, al detectar una tarjeta se ocultan los contenidos de las demás")]
     public bool soloUnContenidoVisible = true;
 
+    [Tooltip("Se invoca al dejar de leer la tarjeta (simulación o evento LOST del hardware)")]
+    public UnityEvent alPerderLectura = new UnityEvent();
+
+    [Header("Contenido por defecto")]
+    [Tooltip("Se muestra cuando no hay ninguna tarjeta NFC detectada")]
+    public GameObject contenidoPorDefecto;
+
     Dictionary<string, int> porUid;    // UID → índice en la lista
     string buffer = "";
     readonly List<Keyboard> keyboards = new List<Keyboard>();
@@ -48,6 +55,12 @@ public class ControlNFC : MonoBehaviour
         for (int i = 0; i < tarjetas.Count; i++)
             if (!string.IsNullOrEmpty(tarjetas[i].uid))
                 porUid[tarjetas[i].uid.ToUpperInvariant()] = i;
+
+        foreach (TarjetaNFC tarjeta in tarjetas)
+            if (tarjeta != null && tarjeta.contenido != null)
+                tarjeta.contenido.SetActive(false);
+
+        MostrarContenidoPorDefecto();
     }
 
     void Update()
@@ -155,8 +168,34 @@ public class ControlNFC : MonoBehaviour
             Debug.LogWarning($"[NFC] Tarjeta no registrada: {uid}");
     }
 
+    public void MostrarContenidoPorDefecto()
+    {
+        if (contenidoPorDefecto != null)
+            contenidoPorDefecto.SetActive(true);
+    }
+
+    [ContextMenu("Simular fin de lectura NFC")]
+    public void SimularFinDeLecturaNfc()
+    {
+        buffer = string.Empty;
+
+        foreach (TarjetaNFC tarjeta in tarjetas)
+        {
+            if (tarjeta != null && tarjeta.contenido != null)
+                tarjeta.contenido.SetActive(false);
+        }
+
+        MostrarContenidoPorDefecto();
+        NfcService.Reset();
+        alPerderLectura?.Invoke();
+        Debug.Log("[NFC] Simulación: tarjeta retirada / búsqueda detenida.");
+    }
+
     private void Activar(int i)
     {
+        if (contenidoPorDefecto != null)
+            contenidoPorDefecto.SetActive(false);
+
         if (soloUnContenidoVisible)
             foreach (var t in tarjetas)
                 if (t != null && t.contenido != null)
