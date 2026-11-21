@@ -1,0 +1,26 @@
+{
+    "name": "GoogleCardboard.HelloCardboard.Sample",
+    "rootNamespace": "",
+    "references": [
+        "Google.XR.Cardboard",
+        "Unity.XR.Management",
+        "Unity.InputSystem"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": false,
+    "defineConstraints": [
+        "CARDBOARD_XR_PRESENT"
+    ],
+    "versionDefines": [
+        {
+            "name": "com.google.xr.cardboard",
+            "expression": "1.0.0",
+            "define": "CARDBOARD_XR_PRESENT"
+        }
+    ],
+    "noEngineReferences": false
+}

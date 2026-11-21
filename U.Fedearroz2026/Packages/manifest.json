@@ -1,5 +1,6 @@
 {
   "dependencies": {
+    "com.google.xr.cardboard": "file:com.google.xr.cardboard-1.36.0.tgz",
     "com.unity.2d.animation": "13.0.6",
     "com.unity.2d.aseprite": "3.0.2",
     "com.unity.2d.common": "12.0.4",
@@ -19,6 +20,7 @@
     "com.unity.timeline": "1.8.13",
     "com.unity.ugui": "2.0.0",
     "com.unity.visualscripting": "1.9.12",
+    "com.unity.xr.management": "4.5.4",
     "com.unity.modules.accessibility": "1.0.0",
     "com.unity.modules.adaptiveperformance": "1.0.0",
     "com.unity.modules.ai": "1.0.0",
